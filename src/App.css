@@ -1,0 +1,753 @@
+/* App Layout */
+.app {
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 70px 1fr;
+  height: 100vh;
+  background-color: #f8fafc;
+  color: #333;
+}
+
+/* Header Styles */
+.header {
+  grid-area: header;
+  background-color: #ffffff;
+  color: #333;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-right: 2rem;
+}
+
+.header-search {
+  position: relative;
+}
+
+.header-search input {
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  width: 300px;
+  font-size: 0.9rem;
+}
+
+.header-search::before {
+  content: "🔍";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-notifications {
+  position: relative;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.header-notifications::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444;
+  border-radius: 50%;
+}
+
+.header-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.header-user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-user-profile span {
+  font-weight: 500;
+  color: #334155;
+}
+
+.header-add-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-add-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  grid-area: sidebar;
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 0.8rem;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.sidebar-links li.active a {
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.sidebar-links a:hover {
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+.sidebar-links .icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+/* Main Content Area */
+.dashboard-main-content {
+  grid-area: main;
+  padding: 2rem;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 1.5rem;
+  max-height: calc(100vh - 70px);
+}
+
+/* Dashboard Overview */
+.dashboard-overview {
+  grid-column: span 12;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-overview h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.health-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.health-metric-card {
+  background-color: #f8fafc;
+  border-radius: 10px;
+  padding: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.health-metric-card:hover {
+  transform: translateY(-3px);
+}
+
+.health-metric-name {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.health-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.health-metric-unit {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.health-metric-status {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.health-metric-status.normal {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.health-metric-status.attention {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+@media (max-width: 992px) {
+  .health-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .health-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Anatomy Section */
+.anatomy-section {
+  grid-column: span 6;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  min-height: 400px;
+}
+
+.anatomy-section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.anatomy-image-container {
+  position: relative;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.anatomy-image {
+  height: 100%;
+  object-fit: contain;
+}
+
+.anatomy-indicator {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.anatomy-indicator.healthy {
+  background-color: #4CAF50;
+}
+
+.anatomy-indicator.attention {
+  background-color: #F44336;
+}
+
+.anatomy-indicator.normal {
+  background-color: #2196F3;
+}
+
+.anatomy-indicator-tooltip {
+  position: absolute;
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 5;
+  display: none;
+}
+
+.anatomy-indicator:hover .anatomy-indicator-tooltip {
+  display: block;
+}
+
+/* Health Status Cards */
+.health-status-cards {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.health-status-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.health-status-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.health-status-card-icon.attention {
+  background-color: #FEF2F2;
+  color: #F44336;
+}
+
+.health-status-card-icon.normal {
+  background-color: #EFF6FF;
+  color: #2196F3;
+}
+
+.health-status-card-content {
+  flex-grow: 1;
+}
+
+.health-status-card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.health-status-card-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.health-status-card-description {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.status-indicator.attention {
+  background-color: #F44336;
+}
+
+.status-indicator.normal {
+  background-color: #2196F3;
+}
+
+/* Calendar View */
+.calendar-view {
+  grid-column: span 7;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-view h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-month {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-control-button {
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th {
+  padding: 0.8rem 0;
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.calendar-table td {
+  text-align: center;
+  padding: 0.8rem 0;
+  position: relative;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.calendar-day {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+}
+
+.calendar-day.has-appointment {
+  background-color: #EFF6FF;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.calendar-day.has-appointment::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 4px;
+  height: 4px;
+  background-color: #2563eb;
+  border-radius: 50%;
+}
+
+.calendar-day.today {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.other-month {
+  color: #cbd5e1;
+}
+
+.calendar-appointments {
+  margin-top: 1.5rem;
+}
+
+.calendar-appointment-card {
+  background-color: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-appointment-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #EFF6FF;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.calendar-appointment-content {
+  flex-grow: 1;
+}
+
+.calendar-appointment-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #1e293b;
+}
+
+.calendar-appointment-time {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Upcoming Schedule */
+.upcoming-schedule {
+  grid-column: span 5;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.upcoming-schedule h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.upcoming-day-group {
+  margin-bottom: 1.5rem;
+}
+
+.upcoming-day-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.8rem;
+}
+
+.simple-appointment-card {
+  background-color: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.simple-appointment-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #EFF6FF;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.simple-appointment-content {
+  flex-grow: 1;
+}
+
+.simple-appointment-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #1e293b;
+}
+
+.simple-appointment-time {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Activity Feed */
+.activity-feed {
+  grid-column: span 12;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.activity-feed h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.activity-summary {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.activity-summary-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-right: 1rem;
+}
+
+.activity-summary-text {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.activity-chart {
+  display: flex;
+  align-items: flex-end;
+  height: 150px;
+  gap: 1.5rem;
+}
+
+.activity-chart-bar {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity-chart-column {
+  width: 100%;
+  background-color: #EFF6FF;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.3s;
+}
+
+.activity-chart-column.active {
+  background-color: #2563eb;
+}
+
+.activity-chart-label {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-main-content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .anatomy-section,
+  .health-status-cards,
+  .calendar-view,
+  .upcoming-schedule,
+  .activity-feed {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .dashboard-main-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+  }
+  
+  .header-search input {
+    width: 200px;
+  }
+  
+  .calendar-view,
+  .upcoming-schedule {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-search {
+    display: none;
+  }
+  
+  .dashboard-main-content {
+    grid-gap: 1rem;
+    padding: 0.8rem;
+  }
+}

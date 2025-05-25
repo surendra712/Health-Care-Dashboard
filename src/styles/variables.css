@@ -1,0 +1,11 @@
+/* Variables */
+
+:root {
+  --primary-color: #337ab7;
+  --secondary-color: #23527c;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --font-family: Arial, sans-serif;
+  --font-size: 16px;
+  --line-height: 1.5;
+}
